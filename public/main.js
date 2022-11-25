@@ -17,6 +17,8 @@ let choices = []
 let compDuo = []
 let playerDuo = []
 
+const baseURL = 'http://ec2-35-88-61-43.us-west-2.compute.amazonaws.com/'
+
 duelBtn.classList.add('hide')
 playAgainBtn.classList.add('hide')
 chooseHeader.classList.add('hide')
@@ -118,7 +120,7 @@ const putBotBack = (id) => {
 }
 
 const drawFive = () => {
-    axios.get('http://ec2-35-88-61-43.us-west-2.compute.amazonaws.com/api/robots/five')
+    axios.get(`${baseURL}api/robots/five`)
         .then(res => {
             choices = res.data.choices
             compDuo = res.data.compDuo
@@ -135,7 +137,7 @@ const duel = () => {
     renderCompDuo()
     document.querySelectorAll('.bot-btn').forEach(btn => btn.classList.add('hide'))
     setTimeout(() => {
-        axios.post('http://ec2-35-88-61-43.us-west-2.compute.amazonaws.com/api/duel', {compDuo, playerDuo})
+        axios.post(`${baseURL}api/duel`, {compDuo, playerDuo})
             .then(({data}) => {
                 resultsText.textContent = data
                 playAgainBtn.classList.remove('hide')
@@ -158,7 +160,7 @@ const reset = () => {
 }
 
 const getPlayerStats = () => {
-    axios.get('http://ec2-35-88-61-43.us-west-2.compute.amazonaws.com/api/player')
+    axios.get(`${baseURL}api/player`)
         .then(({data: {wins, losses}}) => {
             winsText.textContent = `Wins: ${wins}`
             lossesTest.textContent = `Losses: ${losses}`
@@ -166,7 +168,7 @@ const getPlayerStats = () => {
 }
 
 const getAllBots = () => {
-    axios.get('http://ec2-35-88-61-43.us-west-2.compute.amazonaws.com/api/robots')
+    axios.get(`${baseURL}api/robots`)
         .then(({data}) => {
             allBotsDiv.innerHTML = ''
         
