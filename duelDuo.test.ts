@@ -7,8 +7,8 @@ require('chromedriver')
 const driver = new Builder().withCapabilities(Capabilities.chrome()).build()
 
 beforeEach(async () => {
-    // driver.get('http://localhost:3000/')
-    driver.get('http://127.0.0.1:5502/public/index.html')
+    // driver.get('http://localhost:4000/')
+    driver.get('http://ec2-35-88-61-43.us-west-2.compute.amazonaws.com/')
     
 })
 
