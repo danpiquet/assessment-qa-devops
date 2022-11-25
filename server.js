@@ -72,6 +72,6 @@ app.get('api/player', (req, res) => {
     }
 })
 
-app.listen(4000, () => {
-  console.log(`Listening on 4000`)
+app.listen(3000, () => {
+  console.log(`Listening on 3000`)
 })
